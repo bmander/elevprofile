@@ -1,7 +1,7 @@
 import setuptools
 
 setuptools.setup(
-    name="osmpath",
+    name="elevprofile",
     version="0.1.0",
 
     author="Brandon Martin-Anderson",
