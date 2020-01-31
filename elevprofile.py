@@ -35,8 +35,9 @@ def get_patch(path, dataset, layer=1, pad=1):
 
 def resample(path, resolution):
   ls = LineString(path)
-  n = int(ls.length//resolution+1)
-  return [ls.interpolate(i, normalized=True).coords[0] for i in np.linspace(0,1,n+1)]
+  ls_length = ls.length
+  n = int(ls_length//resolution+1)
+  return [ls.interpolate(i).coords[0] for i in np.linspace(0,ls_length,n+1)]
 
 
 def elevprofile(path, dataset, resolution):
@@ -55,12 +56,12 @@ def elevprofile(path, dataset, resolution):
 
 
 
+if __name__=='__main__':
+  fname = "data/dc.vrt"
 
-fname = "data/dc.vrt"
+  dataset = rio.open(fname)
 
-dataset = rio.open(fname)
-
-path = [(-77.049533,38.931603), (-77.041999,38.941786), (-77.059450,38.944687)]
+  path = [(-77.049533,38.931603), (-77.041999,38.941786), (-77.059450,38.944687)]
 
 
 
